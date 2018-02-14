@@ -13,6 +13,8 @@ directory to `$HOME/.geneious`. (Or, put the folder elsewhere and set the
 `GENEIOUS_HOME` environment variable to its absolute location.) Move the
 `bin/geneious-dev` script onto your path.
 
+[Geneious plugin dev kit]: https://s3.amazonaws.com/assets.geneious.com/developer/geneious-devkit.zip
+
 # Settting up a plugin project
 
 `geneious-dev` looks in the directory it is executed in for a file named
