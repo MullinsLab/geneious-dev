@@ -7,7 +7,8 @@ geneious = ENV["GENEIOUS_HOME"] || "#{ENV["HOME"]}/.geneious"
 
 run_config = YAML.load(File.read(ARGV[0] || 'run_geneious.yml'))
 
-classpath = [ "#{geneious}/lib/*" , "#{geneious}/iSeek.jar", "#{geneious}/resources", "#{geneious}/." ]
+# Java expands wildcards in the classpath
+classpath = [ "#{geneious}/lib/*", "#{geneious}/iSeek.jar", "#{geneious}/resources", "#{geneious}/." ]
 classpath += run_config['classpath'].map do |fn|
   File.absolute_path(fn)
 end
@@ -22,9 +23,9 @@ cmd = %w[
   -Xmx768M
   -Djava.util.logging.config.file=no_logging.properties
 ]
-cmd << "-cp" << ('"' + classpath.join(":") + '"')
+cmd << "-cp" << classpath.join(":")
 cmd << "com.biomatters.iseek.application.ISeekMain"
 cmd << "extraPlugins=#{ run_config['plugin'] }" if run_config['plugin']
 
 FileUtils.cd(geneious)
-exec cmd.join(" ")
+exec *cmd
