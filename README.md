@@ -9,9 +9,13 @@ it'll run on whatever Ruby you happen to have installed, potentially as old as
 # Installing
 
 Download the [Geneious plugin dev kit][] and copy the `examples/GeneiousFiles`
-directory to `$HOME/.geneious`. (Or, put the folder elsewhere and set the
+directory to `$HOME/.geneious-dev`. (Or, put the folder elsewhere and set the
 `GENEIOUS_HOME` environment variable to its absolute location.) Move the
 `bin/geneious-dev` script onto your path.
+
+Or just run `make install`.
+
+[Geneious plugin dev kit]: https://s3.amazonaws.com/assets.geneious.com/developer/geneious-devkit.zip
 
 # Settting up a plugin project
 

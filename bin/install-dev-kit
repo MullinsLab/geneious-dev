@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e -o pipefail -o nounset
+
+: ${GENEIOUS_HOME:=$HOME/.geneious-dev}
+echo "# Installing into $GENEIOUS_HOME"
+
+tmp="$(mktemp -d -t install-dev-kit.XXXXXX)"
+trap 'rm -rf "$tmp"' EXIT
+
+pushd "$tmp" >/dev/null
+    echo "# Downloading dev kit"
+    curl -fSL --progress-bar https://s3.amazonaws.com/assets.geneious.com/developer/geneious-devkit.zip > geneious-devkit.zip
+
+    echo "# Extracting files"
+    unzip -o geneious-devkit.zip 'geneious-*-devkit/examples/GeneiousFiles/*'
+
+    echo "# Moving files into place"
+    rm -rf "$GENEIOUS_HOME"
+    mv geneious-*-devkit/examples/GeneiousFiles "$GENEIOUS_HOME"
+popd >/dev/null
