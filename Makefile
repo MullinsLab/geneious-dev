@@ -1,4 +1,4 @@
-GENEIOUS_HOME := $(HOME)/.geneious
+GENEIOUS_HOME ?= $(HOME)/.geneious-dev
 export GENEIOUS_HOME
 
 prefix  := /usr/local

@@ -3,7 +3,7 @@
 require 'yaml'
 require 'fileutils'
 
-geneious = ENV["GENEIOUS_HOME"] || "#{ENV["HOME"]}/.geneious"
+geneious = ENV["GENEIOUS_HOME"] || "#{ENV["HOME"]}/.geneious-dev"
 
 run_config = YAML.load(File.read(ARGV[0] || 'run_geneious.yml'))
 
