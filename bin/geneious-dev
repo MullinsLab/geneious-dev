@@ -28,4 +28,5 @@ cmd << "com.biomatters.iseek.application.ISeekMain"
 cmd << "extraPlugins=#{ run_config['plugin'] }" if run_config['plugin']
 
 FileUtils.cd(geneious)
-exec *cmd
+env = { "GENEIOUS_DEV" => "yes"}
+exec env, *cmd
